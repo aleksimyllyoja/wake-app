@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script>
+    window.onload = function() {
+      var input = document.getElementById('input');
+      input.addEventListener('change', handleFiles);
+    }
+
+    function handleFiles(e) {
+      var ctx = document.getElementById('canvas').getContext('2d');
+      var url = URL.createObjectURL(e.target.files[0]);
+      var img = new Image();
+
+      img.onload = function() {
+          ctx.drawImage(img, 0, 0, 400, 300);
+      }
+      img.src = url;
+    }
+  </script>
+  <style>
+    * {
+      color: white;
+    }
+
+    body {
+      background: url("img/seamless%20space.PNG");
+    }
+
+    canvas {
+      border: 10px solid white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test</h1>
+  <input type="file" id="input"/>
+  <canvas width="400" height="300" id="canvas"/>
+</body>
+</html>
